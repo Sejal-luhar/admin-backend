@@ -17,7 +17,8 @@ app.use(morgan('tiny'));
 // cors setup
 
 app.use(cors({
-    origin:'https://admin-frontend-six-rose.vercel.app',
+    // origin:'https://admin-frontend-six-rose.vercel.app',
+    origin:true,
     credentials:true
 }));
 
@@ -28,11 +29,11 @@ app.use('/api/admin',adminRouter);
 // error handling
 
 
-app.use("*",(req,res,next)=>{
-    const error = new Error("Route Not Found");
-    error.status = 404;
-    next(error);
-})
+// app.use("*",(req,res,next)=>{
+//     const error = new Error("Route Not Found");
+//     error.status = 404;
+//     next(error);
+// })
 app.use((err, req, res, next) => {
     console.error(err.stack);  // Log the error stack
     res.status(500).json({
